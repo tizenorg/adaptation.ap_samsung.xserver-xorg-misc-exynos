@@ -1,7 +1,7 @@
 #sbs-git:slp/pkgs/xorg/driver/xserver-xorg-misc xserver-xorg-misc 0.0.1 13496ac354ad7f6709f1ef9b880a206a2df41c80
 Name:	xorg-x11-misc-exynos
 Summary:    X11 X server misc files for exynos
-Version:    0.0.4
+Version:    0.0.5
 Release:    3
 ExclusiveArch:  %arm
 Group:      System/X11
@@ -9,6 +9,7 @@ License:    MIT
 Source0:    %{name}-%{version}.tar.gz
 
 Requires:   xserver-xorg-core
+Requires(post):   xkeyboard-config
 
 %description
 Description: %{summary}
@@ -46,11 +47,14 @@ mkdir -p %{buildroot}/etc/rc.d/rc4.d/
 mkdir -p %{buildroot}/etc/profile.d/
 mkdir -p %{buildroot}/etc/X11/
 cp -af arm-common/xserver %{buildroot}/etc/rc.d/init.d/
+cp -af arm-common/xresources %{buildroot}/etc/rc.d/init.d/
 cp -af arm-common/xsetrc %{buildroot}/etc/X11/
 cp -af arm-common/Xmodmap %{buildroot}/etc/X11/
 cp -af arm-common/xinitrc %{buildroot}/etc/X11/
 ln -s /etc/rc.d/init.d/xserver %{buildroot}/etc/rc.d/rc3.d/S02xserver
 ln -s /etc/rc.d/init.d/xserver %{buildroot}/etc/rc.d/rc4.d/S02xserver
+ln -s /etc/rc.d/init.d/xresources %{buildroot}/etc/rc.d/rc3.d/S80xresources
+ln -s /etc/rc.d/init.d/xresources %{buildroot}/etc/rc.d/rc4.d/S80xresources
 cp -af arm-common/Xorg.sh %{buildroot}/etc/profile.d/
 
 cp -rf arm-e4412/* %{buildroot}/etc/X11/
