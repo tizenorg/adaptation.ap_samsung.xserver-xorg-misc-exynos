@@ -2,7 +2,7 @@
 Name:	xorg-x11-misc-exynos
 Summary:    X11 X server misc files for exynos
 Version:    0.0.5
-Release:    3
+Release:    4
 ExclusiveArch:  %arm
 Group:      System/X11
 License:    MIT
