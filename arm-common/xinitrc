@@ -21,7 +21,7 @@ fi
 
 E17_USER=`id -u app`
 E17_GROUP=`id -g app`
-HOME=/opt/home/app USER=app /usr/bin/enlightenment_start -profile samsung -i-really-know-what-i-am-doing-and-accept-full-responsibility-for-it -user ${E17_USER} -group ${E17_GROUP} &
+HOME=/opt/home/app USER=app EVAS_NO_DRI_SWAPBUF=1 /usr/bin/enlightenment_start -profile samsung -i-really-know-what-i-am-doing-and-accept-full-responsibility-for-it -user ${E17_USER} -group ${E17_GROUP} &
 
 #su -c "HOME=/opt/home/app /usr/bin/enlightenment_start -profile samsung -i-really-know-what-i-am-doing-and-accept-full-responsibility-for-it &" -l app
 
