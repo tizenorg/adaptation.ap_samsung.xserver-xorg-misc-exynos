@@ -1,0 +1,12 @@
+[Unit]
+Description=Xresources
+After=rc-sdlevelinit.service
+Requires=rc-sdlevelinit.service
+
+[Service]
+Type=forking
+ExecStart=/etc/rc.d/init.d/xresources start
+ExecStop=/etc/rc.d/init.d/xresources stop
+
+[Install]
+WantedBy=multi-user.target
