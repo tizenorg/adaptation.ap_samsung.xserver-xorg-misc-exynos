@@ -5,6 +5,7 @@ Requires=rc-sdlevelinit.service
 
 [Service]
 Type=forking
+EnvironmentFile=/run/tizen-mobile-env
 ExecStart=/etc/rc.d/init.d/xresources start
 ExecStop=/etc/rc.d/init.d/xresources stop
 

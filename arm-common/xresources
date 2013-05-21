@@ -11,6 +11,7 @@ case "$1" in
       else
         /usr/bin/xrdb -load -nocpp /etc/X11/Xresources
       fi
+	  mkdir -p /tmp/hibernation
 	  touch /tmp/hibernation/xresources_ready
     fi
   ;;
