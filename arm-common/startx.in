@@ -36,6 +36,12 @@ else
 
 		Xorg ${XSERVER_OPTIONS} &
 	else
+		export WMRC=/etc/X11/wmrc
+		export WMUSERID=`id -u app`
+		export WMGROUPID=`id -g app`
+		export WMUSER=app
+		export WMUSERHOME=/opt/home/app
+
 		xinit ${XINITRC} -- @PREFIX@/bin/Xorg ${XSERVER_OPTIONS} &
 	fi
 fi
