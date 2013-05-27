@@ -54,7 +54,6 @@ cp -af arm-common/Xmodmap %{buildroot}/etc/X11/
 cp -af arm-common/xinitrc %{buildroot}/etc/X11/
 ln -s /etc/rc.d/init.d/xserver %{buildroot}/etc/rc.d/rc3.d/S02xserver
 ln -s /etc/rc.d/init.d/xserver %{buildroot}/etc/rc.d/rc4.d/S02xserver
-ln -s /etc/rc.d/init.d/xresources %{buildroot}/etc/rc.d/rc3.d/S80xresources
 ln -s /etc/rc.d/init.d/xresources %{buildroot}/etc/rc.d/rc4.d/S80xresources
 cp -af arm-common/Xorg.sh %{buildroot}/etc/profile.d/
 mkdir -p %{buildroot}%{_libdir}/systemd/system/multi-user.target.wants

@@ -1,7 +1,7 @@
 [Unit]
 Description=Xresources
-After=rc-sdlevelinit.service
-Requires=rc-sdlevelinit.service
+After=tizen-runtime.target
+Requires=tizen-runtime.target
 
 [Service]
 Type=forking
