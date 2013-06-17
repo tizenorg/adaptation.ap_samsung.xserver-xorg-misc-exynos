@@ -1,8 +1,8 @@
 #sbs-git:slp/pkgs/xorg/driver/xserver-xorg-misc xserver-xorg-misc 0.0.1 13496ac354ad7f6709f1ef9b880a206a2df41c80
 Name:	xorg-x11-misc-exynos
 Summary:    X11 X server misc files for exynos
-Version:    0.0.5
-Release:    4
+Version:    0.0.18
+Release:    1
 ExclusiveArch:  %arm
 Group:      System/X11
 License:    MIT
@@ -10,6 +10,7 @@ Source0:    %{name}-%{version}.tar.gz
 Source1:    xresources.service
 
 Requires:   xserver-xorg-core
+Requires:   xorg-x11-drv-evdev-multitouch
 Requires(post):   xkeyboard-config
 
 %description
