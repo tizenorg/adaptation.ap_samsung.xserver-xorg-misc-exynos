@@ -8,6 +8,7 @@ Group:      System/X11
 License:    MIT
 Source0:    %{name}-%{version}.tar.gz
 Source1:    xresources.service
+Source2:    xresources.path
 
 Requires:   xserver-xorg-core
 Requires:   xorg-x11-drv-evdev-multitouch
@@ -57,9 +58,10 @@ ln -s /etc/rc.d/init.d/xserver %{buildroot}/etc/rc.d/rc3.d/S02xserver
 ln -s /etc/rc.d/init.d/xserver %{buildroot}/etc/rc.d/rc4.d/S02xserver
 ln -s /etc/rc.d/init.d/xresources %{buildroot}/etc/rc.d/rc4.d/S80xresources
 cp -af arm-common/Xorg.sh %{buildroot}/etc/profile.d/
-mkdir -p %{buildroot}%{_libdir}/systemd/system/multi-user.target.wants
+mkdir -p %{buildroot}%{_libdir}/systemd/system/graphical.target.wants
 install -m 0644 %SOURCE1 %{buildroot}%{_libdir}/systemd/system/xresources.service
-ln -s ../xresources.service %{buildroot}%{_libdir}/systemd/system/multi-user.target.wants/xresources.service
+install -m 0644 %SOURCE2 %{buildroot}%{_libdir}/systemd/system/xresources.path
+ln -s ../xresources.path %{buildroot}%{_libdir}/systemd/system/graphical.target.wants/
 
 cp -rf arm-e4412/* %{buildroot}/etc/X11/
 
@@ -83,5 +85,6 @@ mkdir -p /opt/var/log
 /etc/X11/xorg.conf.d/*.conf
 %{_bindir}/startx
 %{_libdir}/systemd/system/xresources.service
-%{_libdir}/systemd/system/multi-user.target.wants/xresources.service
+%{_libdir}/systemd/system/xresources.path
+%{_libdir}/systemd/system/graphical.target.wants/xresources.path
 

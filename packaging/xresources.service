@@ -1,13 +1,11 @@
 [Unit]
 Description=Xresources
-After=tizen-runtime.target
-Requires=tizen-runtime.target
 
 [Service]
-Type=forking
-EnvironmentFile=/run/tizen-mobile-env
+Type=oneshot
+EnvironmentFile=/etc/sysconfig/tizen-mobile-ui
 ExecStart=/etc/rc.d/init.d/xresources start
-ExecStop=/etc/rc.d/init.d/xresources stop
+RemainAfterExit=yes
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=graphical.target
