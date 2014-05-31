@@ -1,0 +1,9 @@
+[Unit]
+Description=scim daemon
+
+[Service]
+EnvironmentFile=/run/tizen-mobile-env
+ExecStart=/usr/bin/scim -d
+
+[Install]
+WantedBy=multi-user.target

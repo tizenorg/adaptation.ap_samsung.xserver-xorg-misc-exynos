@@ -1,0 +1,53 @@
+#!/bin/sh
+
+DISPLAY=":0"
+LOGDIR="/var/log"
+XORG_CONF=" -config /etc/X11/xorg.conf -configdir /etc/X11/xorg.conf.d "
+OTHER_OPTIONS=" -logfile ${LOGDIR}/Xorg.0.log -ac -noreset +accessx 0 +dpmsphone "
+
+#run script to enable gl
+if [ -e /usr/bin/opengl-es-setup-mali-env.sh ]; then
+	/usr/bin/opengl-es-setup-mali-env.sh
+fi
+
+#backup previous Xorg.0.log file
+if [ -e ${LOGDIR}/Xorg.0.log ]; then
+	mv ${LOGDIR}/Xorg.0.log ${LOGDIR}/prev.Xorg.0.log
+fi
+
+#backup previous Xorg.0.log.old file
+if [ -e ${LOGDIR}/Xorg.0.log.old ]; then
+	mv ${LOGDIR}/Xorg.0.log.old ${LOGDIR}/prev.Xorg.0.log.old
+fi
+
+if [ -e ~/.xinitrc ]; then
+	XINITRC=~/.xinitrc
+else
+	XINITRC=/etc/X11/xinitrc
+fi
+
+XSERVER_OPTIONS=" ${DISPLAY} ${OTHER_OPTIONS} ${XORG_CONF} "
+
+if [ "$1" = "--gdb" ]; then
+	if [ -x /usr/bin/pvrsrvinit ]; then
+		pvrsrvinit start
+	fi
+	gdb --args Xorg ${XSERVER_OPTIONS}
+else
+	if [ "$1" = "--only" ]; then
+		if [ -x /usr/bin/pvrsrvinit ]; then
+			pvrsrvinit start
+		fi
+
+		Xorg ${XSERVER_OPTIONS} &
+	else
+		export WMRC=/etc/X11/wmrc
+		export WMUSERID=`id -u app`
+		export WMGROUPID=`id -g app`
+		export WMUSER=app
+		export WMUSERHOME=/opt/home/app
+
+		xinit ${XINITRC} -- @PREFIX@/bin/Xorg ${XSERVER_OPTIONS} &
+	fi
+fi
+

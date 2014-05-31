@@ -1,0 +1,16 @@
+[Unit]
+Description=Path-activation for xresources.service
+
+[Path]
+# This is somehow a not good solution giving that we're
+# depends on Xorg in fact.
+# However, there isn't a stable way let us to *After* Xorg
+# currently, Xorg start finished isn't mean it's ready and
+# even /tmp/.X0-lock was found not stable.
+# Finally, we need change Xorg to sd_notify(3), so the others
+# can rely on *After* it.
+# Also see: https://bugs.tizen.org/jira/browse/TDIST-290
+PathExists=/tmp/.wm_ready
+
+[Install]
+WantedBy=graphical.target

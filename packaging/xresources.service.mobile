@@ -1,0 +1,11 @@
+[Unit]
+Description=Xresources
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/sysconfig/tizen-mobile-ui
+ExecStart=/etc/rc.d/init.d/xresources start
+RemainAfterExit=yes
+
+[Install]
+WantedBy=graphical.target
