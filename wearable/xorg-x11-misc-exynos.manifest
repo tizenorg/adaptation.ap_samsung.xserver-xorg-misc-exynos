@@ -1,0 +1,8 @@
+<manifest>
+	<request>
+		<domain name="xorg"/>
+	</request>
+	<assign>
+		<filesystem path="/opt/etc/dump.d/module.d/winsys_log_dump.sh" label="_" exec_label="none" />
+	</assign>
+</manifest>

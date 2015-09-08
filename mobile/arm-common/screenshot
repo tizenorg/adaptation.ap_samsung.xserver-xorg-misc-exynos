@@ -1,0 +1,22 @@
+#!/bin/sh
+
+export DISPLAY=:0.0
+
+WIDTH=`xrandr | head -1 | awk '{printf $8}' | sed -e 's/[^0-9]//g'`
+HEIGHT=`xrandr | head -1 | awk '{printf $10}' | sed -e 's/[^0-9]//g'`
+DIR="/opt/usr/media/Screenshots"
+TIMESTAMP=`date +%Y%m%d%H%M%S`
+FILE=$DIR"/Screen-$TIMESTAMP.bmp"
+
+if [ ! -d $DIR ]; then
+   mkdir -p $DIR
+fi
+
+if [ -f /usr/bin/screenshot-arm ]; then
+   /usr/bin/screenshot-arm -w $WIDTH -h $HEIGHT -f $FILE 2> /dev/null
+   mediadb-update -r $DIR 1> /dev/null
+   echo "\"$FILE\" saved"
+   echo "screenshot success"
+else
+   echo "no file: screenshot-arm"
+fi
