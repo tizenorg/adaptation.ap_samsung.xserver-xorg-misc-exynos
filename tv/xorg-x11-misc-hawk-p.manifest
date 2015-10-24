@@ -1,0 +1,20 @@
+<manifest>
+	<request>
+		<domain name="xorg"/>
+	</request>
+	<assign>
+                <filesystem path="/etc/rc.d/init.d/xserver" label="_" exec_label="none" />
+                <filesystem path="/etc/rc.d/init.d/xresources" label="_" exec_label="none" />
+                <filesystem path="/etc/rc.d/rc3.d/S02xserver" label="_" exec_label="none" />
+                <filesystem path="/etc/rc.d/rc4.d/S02xserver" label="_" exec_label="none" />
+                <filesystem path="/etc/rc.d/rc3.d/S80xresources" label="_" exec_label="none" />
+                <filesystem path="/etc/rc.d/rc4.d/S80xresources" label="_" exec_label="none" />
+                <filesystem path="/etc/X11/Xresources" label="_" exec_label="none" />
+                <filesystem path="/usr/bin/winsys_log_dump.sh" label="_" exec_label="none" />
+                <filesystem path="/etc/profile.d/Xorg.sh" label="_" exec_label="none" />
+                <filesystem path="/etc/X11/xorg.conf.d/display.conf" label="_" exec_label="none" />
+                <filesystem path="/etc/X11/xorg.conf.d/input.conf" label="_" exec_label="none" />
+                <filesystem path="/etc/X11/xorg.conf.d/module.conf" label="_" exec_label="none" />
+                <filesystem path="/etc/X11/xorg.conf" label="_" exec_label="none" />
+	</assign>
+</manifest>

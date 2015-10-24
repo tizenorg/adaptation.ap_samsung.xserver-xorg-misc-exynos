@@ -1,7 +1,5 @@
 #!/bin/sh
 
-/usr/bin/scim -d &
-
 # set dpi
 if [ -x /usr/bin/xrdb ]; then
 	if [ -e ~/.Xresources ]; then

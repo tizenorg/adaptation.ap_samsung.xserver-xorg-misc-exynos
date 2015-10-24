@@ -1,7 +1,8 @@
 [Unit]
 Description=xserver
 DefaultDependencies=no
-After=systemd-udev-trigger.service opt.mount smack-default-labeling.service
+Requires=tizen-generate-env.service
+After=systemd-udev-trigger.service opt.mount smack-default-labeling.service tizen-generate-env.service
 
 [Service]
 Type=oneshot

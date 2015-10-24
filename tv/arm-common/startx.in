@@ -5,11 +5,6 @@ LOGDIR="/var/log"
 XORG_CONF=" -config /etc/X11/xorg.conf -configdir /etc/X11/xorg.conf.d -nolisten tcp "
 OTHER_OPTIONS=" -logfile ${LOGDIR}/Xorg.0.log -ac -noreset +accessx 0 +dpmsphone "
 
-#run script to enable gl
-if [ -e /usr/bin/opengl-es-setup-mali-env.sh ]; then
-	/usr/bin/opengl-es-setup-mali-env.sh
-fi
-
 #backup previous Xorg.0.log file
 if [ -e ${LOGDIR}/Xorg.0.log ]; then
 	mv ${LOGDIR}/Xorg.0.log ${LOGDIR}/prev.Xorg.0.log
@@ -41,12 +36,6 @@ else
 
 		Xorg ${XSERVER_OPTIONS} &
 	else
-		export WMRC=/etc/X11/wmrc
-		export WMUSERID=`id -u app`
-		export WMGROUPID=`id -g app`
-		export WMUSER=app
-		export WMUSERHOME=/opt/home/app
-
 		xinit ${XINITRC} -- @PREFIX@/bin/Xorg ${XSERVER_OPTIONS} &
 	fi
 fi

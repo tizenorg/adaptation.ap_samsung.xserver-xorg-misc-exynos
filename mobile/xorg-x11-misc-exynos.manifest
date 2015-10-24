@@ -4,5 +4,10 @@
 	</request>
 	<assign>
 		<filesystem path="/opt/etc/dump.d/module.d/winsys_log_dump.sh" label="_" exec_label="none" />
+		<filesystem path="/etc/profile.d/Xorg.sh" label="_" exec_label="none" />
+		<filesystem path="/etc/X11/xorg.conf.d/display.conf" label="_" exec_label="none" />
+		<filesystem path="/etc/X11/xorg.conf.d/input.conf" label="_" exec_label="none" />
+		<filesystem path="/etc/X11/xorg.conf.d/module.conf" label="_" exec_label="none" />
+		<filesystem path="/etc/X11/xorg.conf" label="_" exec_label="none" />
 	</assign>
 </manifest>
